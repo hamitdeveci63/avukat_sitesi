@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,8 @@ SECRET_KEY = 'django-insecure-jk%229c2v2@84psennnus*pikqx^ugb*gckppwm3z3rduw7=sn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Render üzerindeki canlı adresimizi ve lokal test adreslerimizi tanımladık
+ALLOWED_HOSTS = ['deveci-hukuk-burosu.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -116,3 +118,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Render'ın statik dosyaları hata vermeden toplayacağı klasör yolu
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
