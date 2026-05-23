@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av. Naile Deveci | Deveci Hukuk Bürosu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Renk Paleti ve Değişkenler */
+        :root {
+            --bg-color: #0b0c10;      /* Derin Gece Siyahı */
+            --card-bg: #12141c;       /* Premium Füme */
+            --accent-color: #c5a880;  /* Mat Altın / Bronz */
+            --accent-hover: #e5c9a2;  /* Parlak Altın */
+            --text-main: #f3f4f6;     /* Kırık Beyaz */
+            --text-muted: #9ca3af;    /* Soft Gri */
+            --navbar-bg: rgba(11, 12, 16, 0.95); /* Yarı Saydam Navbar */
+        }
+
+        /* Temel Sıfırlamalar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Sayfa içi geçişleri yumuşatır */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding-top: 80px; /* Navbar arkada kalmasın diye üst boşluk */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- SABİT PREMIUM NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: var(--navbar-bg);
+            border-bottom: 1px solid #1a1e29;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(10px); /* Arka planı hafif buğulu yapar */
+        }
+
+        .navbar .container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO (GİRİŞ KAPANI) BÖLÜMÜ --- */
+        header {
+            padding: 100px 0 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #1a1e29;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* --- BÖLÜM AYARLARI --- */
+        section {
+            padding: 90px 0;
+            border-bottom: 1px solid #1a1e29;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        /* Hakkımızda Metni */
+        .about-text {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            text-align: justify;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- FAALİYET ALANLARI (GRID & KARTLAR) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 40px 35px;
+            border-radius: 6px;
+            border-top: 3px solid transparent;
+            border-left: 3px solid var(--accent-color);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Kart Üzerine Gelindiğinde Parlama Efekti */
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-left-color: var(--accent-hover);
+            box-shadow: 0 15px 35px rgba(197, 168, 128, 0.08);
+            background-color: #161922;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        /* --- İLETİŞİM ALANI KUTUSU --- */
+        .contact-box {
+            background-color: var(--card-bg);
+            padding: 45px;
+            border-radius: 6px;
+            border: 1px solid #1a1e29;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-label {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 35px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background-color: #06070a;
+            border-top: 1px solid #1a1e29;
+        }
+
+        /* --- MOBİL UYUMLULUK (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .navbar { height: 70px; }
+            .nav-links { display: none; } /* Mobil menü ikon altyapısı için basit tutuldu */
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">DEVECİ <span>HUKUK</span></a>
+            <ul class="nav-links">
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#faaliyet-alanlari">Faaliyet Alanları</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>DEVECİ HUKUK BÜROSU</h1>
+            <p>Avukat Naile Deveci</p>
+        </div>
+    </header>
+
+    <section id="hakkimizda">
+        <div class="container">
+            <h2 class="section-title">Hakkımızda</h2>
+            <div class="about-text">
+                {% if hakkimizda %}
+                    {{ hakkimizda.metin }}
+                {% else %}
+                    <p style="color: var(--accent-color);">Henüz hakkımızda bilgisi girilmedi.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section id="faaliyet-alanlari">
+        <div class="container">
+            <h2 class="section-title">Faaliyet Alanları</h2>
+            <div class="services-grid">
+                {% for hizmet in hizmetler %}
+                    <div class="service-card">
+                        <h3>{{ hizmet.baslik }}</h3>
+                        <p>{{ hizmet.aciklama }}</p>
+                    </div>
+                {% empty %}
+                    <p style="color: var(--accent-color);">Henüz çalışma alanı eklenmedi.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="iletisim" style="border-bottom: none;">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-box">
+                {% if iletisim %}
+                    <div class="contact-item">
+                        <span class="contact-label">Telefon</span>
+                        <span class="contact-value">{{ iletisim.telefon }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Adres</span>
+                        <span class="contact-value">{{ iletisim.adres }}</span>
+                    </div>
+                {% else %}
+                    <p style="color: var(--accent-color);">Henüz iletişim bilgisi girilmedi.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {% now "Y" %} Deveci Hukuk Bürosu. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
